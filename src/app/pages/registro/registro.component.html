@@ -1,0 +1,102 @@
+<div class="contenedor">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title><h1>Registro</h1></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <form>
+                <div class="flex space-x-4">
+                    <mat-form-field class="">
+                        <mat-label>Nombres</mat-label>
+                        <input matInput>
+                        <mat-icon matSuffix>person</mat-icon>
+                      </mat-form-field>
+                      
+                        <mat-form-field>
+                            <mat-label>Apellidos</mat-label>
+                            <input matInput>
+                            <mat-icon matSuffix>person</mat-icon>
+                          </mat-form-field>                      
+                  </div>                  
+                  <div class="">
+                    <mat-form-field class="full-width">
+                        <mat-label>Email</mat-label>
+                        <input matInput>
+                        <mat-icon matSuffix>email</mat-icon>
+                      </mat-form-field>                         
+                  </div>
+                  <div class="flex space-x-4">
+                    <mat-form-field>
+                        <mat-label>Ingresar Contraseña</mat-label>
+                        <input matInput 
+                              [type]="hide ? 'password' : 'text'"
+                              [formControl]="passwordFormControl"
+                              [errorStateMatcher]="matcher"
+                              placeholder="">
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                        <mat-hint></mat-hint>
+                      @if (passwordFormControl.hasError('password') && !passwordFormControl.hasError('required')) {
+                      <mat-error>ingresar una clave válida</mat-error>
+                      }
+                      @if (passwordFormControl.hasError('required')) {
+                      <mat-error>password es <strong>requerido</strong></mat-error>
+                      }
+                      
+                      </mat-form-field>  
+                      <mat-form-field>
+                        <mat-label>Repetir Contraseña</mat-label>
+                        <input matInput 
+                              [type]="hide ? 'password' : 'text'"
+                              [formControl]="passwordFormControl"
+                              [errorStateMatcher]="matcher"
+                              placeholder="">
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                        <mat-hint></mat-hint>
+                      @if (passwordFormControl.hasError('password') && !passwordFormControl.hasError('required')) {
+                      <mat-error>ingresar una clave válida</mat-error>
+                      }
+                      @if (passwordFormControl.hasError('required')) {
+                      <mat-error>password es <strong>requerido</strong></mat-error>
+                      }
+                      
+                      </mat-form-field>                      
+                  </div>                
+                  <div class="flex space-x-4">
+                    <mat-form-field>
+                        <mat-label>Celular</mat-label>
+                        <input matInput>
+                        <mat-icon matSuffix>phone</mat-icon>
+                      </mat-form-field>
+                      <mat-form-field>
+                        <mat-label>Rol</mat-label>
+                        <mat-select>
+                          <mat-option value="one">Inversionista</mat-option>
+                          <mat-option value="two">Jefe Prestamista</mat-option>
+                          <mat-option value="three">Prestamista</mat-option>
+                          <mat-option value="four">Prestatario</mat-option>
+                          <mat-option value="five">Administrador</mat-option>
+                        </mat-select>
+                        <mat-icon matSuffix>person</mat-icon>
+                      </mat-form-field>                       
+                  </div>
+                  <div class="">
+                    <mat-form-field class="full-width">
+                        <mat-label>Fecha de Registro</mat-label>
+                        <input matInput [matDatepicker]="picker">
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                      </mat-form-field>                         
+                  </div>
+                  <div class="boton">
+                <button mat-raised-button color="danger">Cancelar</button> |
+                <button mat-raised-button color="primary">Registrarse</button>
+              </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+    </div>
