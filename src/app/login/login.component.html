@@ -1,0 +1,51 @@
+<div class="contenedor">
+<mat-card>
+    <mat-card-header>
+        <mat-card-title><h1>Iniciar sesión</h1></mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form>
+            <div class="email-container">
+                <mat-form-field>
+                  <mat-label>Ingresar Correo</mat-label>
+                  <input matInput
+                         placeholder="example@example.com"
+                         [formControl]="email"
+                         (blur)="updateErrorMessage()"
+                         required>
+                  @if (email.invalid) {
+                    <mat-error>{{errorMessage}}</mat-error>
+                  }
+                  <mat-icon matSuffix>person</mat-icon>
+                    <mat-hint></mat-hint>
+                </mat-form-field>
+              </div>
+              
+              <div class="password-container">
+                <mat-form-field>
+                  <mat-label>Ingresar Contraseña</mat-label>
+                  <input matInput 
+                        [type]="hide ? 'password' : 'text'"
+                        [formControl]="passwordFormControl"
+                        [errorStateMatcher]="matcher"
+                        placeholder="">
+                  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+                  <mat-hint></mat-hint>
+                @if (passwordFormControl.hasError('password') && !passwordFormControl.hasError('required')) {
+                <mat-error>ingresar una clave válida</mat-error>
+                }
+                @if (passwordFormControl.hasError('required')) {
+                <mat-error>password es <strong>requerido</strong></mat-error>
+                }
+                </mat-form-field>                         
+              </div>
+              <div class="boton">
+            <button class="reg-boton" mat-raised-button color="primary">Registrarse</button> |
+            <button mat-raised-button color="primary">Iniciar sesión</button>
+        </div>
+        </form>
+    </mat-card-content>
+</mat-card>
+</div>
