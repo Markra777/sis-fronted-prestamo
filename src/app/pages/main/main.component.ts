@@ -3,6 +3,7 @@ import { LayoutComponent } from '../../components/layout/layout.component';
 
 
 
+
 @Component({
   selector: 'app-main',
   standalone: true,
